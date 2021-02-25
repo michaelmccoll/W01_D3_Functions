@@ -38,8 +38,11 @@ print(completed_task_list)
 print(" ")
 print("Task #3 _____")
 
-for task in tasks:
-    print(task["description"])
+def display_descriptions():
+    for task in tasks:
+        print(task["description"])
+
+display_descriptions()
 
 # Task 4: Print a list of tasks where time_taken is at least a given time
 print(" ")
@@ -69,18 +72,72 @@ def find_task_by_desc(task_list, task_desc):
 found_task = find_task_by_desc(tasks, "Feed Cat")
 print(found_task)  
 
-# # Task 6: Given a description update that task to mark it as complete.
-# print("Task #6 _____")
-# print(" ")
+# Task 6: Given a description update that task to mark it as complete.
+print(" ")
+print("Task #6 _____")
 
-# # Task 7: Add a task to the list
-# print("Task #7 _____")
-# print(" ")
+def TBC():
+    pass
 
-# # Task 8: Use a while loop to display the following menu and allow the use to enter an option.
-# print("Task #8 _____")
-# print(" ")
+# Task 7: Add a task to the list
+print(" ")
+print("Task #7 _____")
 
-# # Task 9: Call the appropriate function depending on the users choice.
-# print("Task #9 _____")
-# print(" ")
+def add_task(desc,status,time):
+    tasks.append({
+        "description": desc,
+        "completed": status,
+        "time_taken": time})
+
+add_task("Shower",True,"15")
+print(tasks)
+
+# Task 8: Use a while loop to display the following menu and allow the use to enter an option.
+print(" ")
+print("Task #8 _____")
+
+menu = [
+    "Menu:",
+    "1: Display All Tasks",
+    "2: Display Uncompleted Tasks",
+    "3: Display Completed Tasks",
+    "4: Mark Task as Complete",
+    "5: Get Tasks Which Take Longer Than a Given Time",
+    "6: Find Task by Description",
+    "7: Add a new Task to list",
+    "M or m: Display this menu",
+    "Q or q: Quit"
+]
+
+def menu_display():
+    for options in menu:
+        print(options)
+
+menu_display()
+
+user_selection = int(input("Please select an option from the menu: "))
+print(user_selection)
+
+# Task 9: Call the appropriate function depending on the users choice.
+print(" ")
+print("Task #9 _____")
+
+def quit():
+    if user_selection == Q or user_selection == q:
+        print("Quit")
+
+def menu_func():
+    if user_selection == M or user_selection == m:
+        menu_display()
+
+menu_functions = [
+    {1: "Display All Tasks","function": display_descriptions()},
+    {2: "Display Uncompleted Tasks","function": find_uncompleted_tasks()},
+    {3: "Display Completed Tasks","function": find_completed_tasks()},
+    {4: "Mark Task as Complete","function":TBC()},
+    {5: "Get Tasks Which Take Longer Than a Given Time","function": task_time()},
+    {6: "Find Task by Description","function": find_task_by_desc()},
+    {7: "Add a new Task to list","function": add_task()},
+    {M or m: "Display this menu","function": menu_func()},
+    {Q or q: "Quit", "function": quit()}
+]
